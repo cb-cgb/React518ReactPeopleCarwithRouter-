@@ -4,23 +4,27 @@ import CarRow from '../Components/CarRow';
 
 class DeleteCars extends React.Component {
     state = { 
-        cars:[],
+        
         person: {
             id: '',
             firstName: '',
-            lastName: ''
+            lastName: '',
+            cars:[]
         }
      }
 
      componentDidMount = async() => {
-      await this.getPersonDetails(); //need this to pass person object to the deletecars call later. 
-      const {data} = await axios.get(`/api/peoplecar/getcars?id=${this.props.match.params.personId}`);
-      this.setState({cars:data});      
+      //await this.getPersonDetails(); //need this to pass person object to the deletecars call later. 
+      const {data} = await axios.get(`api/peoplecar/getperson?id=${this.props.match.params.personId}`);
+       
+      //const {data} = await axios.get(`/api/peoplecar/getcars?id=${this.props.match.params.personId}`);
+      this.setState({person:data});      
      }
 
      getPersonDetails = async() => {
         const {data} = await axios.get(`api/peoplecar/getperson?id=${this.props.match.params.personId}`);
         this.setState({person: data});
+            
         
      }
 
@@ -44,7 +48,7 @@ class DeleteCars extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.cars.map(c=> 
+                        {this.state.person.cars.map(c=> 
                           <CarRow key={c.Id} car={c} />                           
                          )
                         }

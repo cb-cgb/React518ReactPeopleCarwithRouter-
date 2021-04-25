@@ -18,8 +18,9 @@ class AddCar extends React.Component {
     
     componentDidMount =async()=> {
         const {data} = await axios.get(`/api/peoplecar/getperson?id=${this.props.match.params.personId}`)
-        await this.setState({person:data})
+        await this.setState({person: data})
         console.log(this.state.person);
+        
     }
 
     onTextChange=e=> {

@@ -28,7 +28,7 @@ namespace React518RouterPeopleCars.data
         {
             using (var context = new PeopleCarContext(_conn))
             {
-                return context.People.FirstOrDefault(p => p.Id == id);
+                return context.People.Include(p => p.Cars).FirstOrDefault(p => p.Id == id);
             }
         }
 

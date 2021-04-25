@@ -29,7 +29,7 @@ class PersonRow extends React.Component {
         const isMissingData = (firstName ==='' || lastName===''|| age==='');
 
         return ( 
-            <div className="container" >
+            <div style={{ minHeight: 1000, paddingTop: 300 }}>
                 
 
                 <div className="col-md-6 offset-3">                  
